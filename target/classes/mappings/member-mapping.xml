@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDAO">
+	<!-- 회원 id를 조건으로 회원조회 : getMember -->
+	<!-- com.green.biz.dto.MemberVO - sql-map-config.xml resultType -->
+	<select id="getMember" resultType="member">
+		SELECT * FROM member
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 회원 존재 여부 조회 -->
+	<select id="confirmID" resultType="String">
+		SELECT pwd FROM member
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 회원 등록 : insertMember , 조회메소드가 아니면 resultType필요 없음-->
+	<insert id="insertMember">
+		INSERT INTO member(id, pwd, name, email, zip_num, address, phone)
+		VALUES(#{id}, #{pwd}, #{name}, #{email}, #{zip_num}, #{address}, #{phone})		
+	</insert>
+	
+	<!-- 동 이름으로 우편번호 찾기 -->
+	<select id="selectAddressByDong" parameterType="String" resultType="address">
+		SELECT * FROM address
+		WHERE dong LIKE '%' || #{dong} || '%'
+	</select>
+	
+	<!-- 사용자 이름name과 email을 조건으로 사용자 정보 조회 - id찾기 -->
+	<select id="getMemberByNameAndEmail" resultType="member">
+		SELECT * FROM member
+		WHERE name=#{name} AND email=#{email}
+	</select>
+	
+	<!-- 이름, 이메일, 아이디 조건에 맞는 멤버를 조회하여 비밀번호 찾기 -->
+	<select id="findPassword" resultType="member">
+		SELECT * FROM member
+		WHERE id=#{id} AND name=#{name} AND email=#{email}
+	</select>
+	
+	<!-- 암호 변경 업데이트 (변경시 resulttype필요없음)-->
+	<update id="changePassword">
+		UPDATE member SET pwd=#{pwd}
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 전체 회원조회 -->
+	<select id="listMember" parameterType="String" resultType="member">
+		SELECT * FROM member
+		WHERE name LIKE '%' || #{name} || '%'
+		ORDER BY REGDATE DESC
+	</select>	
+	
+</mapper>
