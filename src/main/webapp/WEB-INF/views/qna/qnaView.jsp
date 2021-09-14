@@ -16,22 +16,20 @@
 <div class="container py-4 mb-4">
     <div class="row py-4">
         <form class="col-md-9 m-auto" name="formm" method="post">
-			<table id="qnaView" class="table t-a-c fs-12">
+			<table id="qnaView" class="table fs-12">
 				<tr>
 					<th>제목</th>
 					<td>${qnaVO.subject}</td>
-				</tr>
-				<tr>
 					<th>등록일</th>
 					<td><fmt:formatDate value="${qnaVO.indate}" type="date"/></td>
 				</tr>
 				<tr>
 					<th>질문내용</th>
-					<td>${qnaVO.content}</td>
+					<td colspan="3">${qnaVO.content}</td>
 				</tr>
 				<tr>
 					<th>답변내용</th>
-					<td>${qnaVO.reply}</td>
+					<td colspan="3">${qnaVO.reply}</td>
 				</tr>
 			</table>
 			
