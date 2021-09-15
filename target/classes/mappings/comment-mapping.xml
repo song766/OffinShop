@@ -27,11 +27,17 @@
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
 	]]>
 	</select>	
-	-->
+	
 	
 	<insert id="saveComment" parameterType="comment">
 		INSERT INTO product_comment(comment_seq, pseq, content, writer, c_image)
 		VALUES(prod_comment_seq.NEXTVAL, #{pseq}, #{content}, #{writer}, #{c_image})
+	</insert>
+	-->
+	
+	<insert id="saveComment" parameterType="comment">
+		INSERT INTO product_comment(comment_seq, pseq, content, writer)
+		VALUES(prod_comment_seq.NEXTVAL, #{pseq}, #{content}, #{writer})
 	</insert>
 	
 	<update id="updateComment" parameterType="comment">
