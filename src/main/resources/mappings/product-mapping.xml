@@ -94,5 +94,10 @@
 			bestyn=#{bestyn}
 		WHERE pseq=#{pseq}
 	</update>
-		
+	
+	<!-- 상품 정보 삭제 : deleteProduct -->
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM product
+		WHERE pseq=#{pseq}
+	</delete>
 </mapper>

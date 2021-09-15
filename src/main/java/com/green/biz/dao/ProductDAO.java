@@ -68,6 +68,11 @@ public class ProductDAO {
 		mybatis.update("ProductDAO.updateProduct", vo);
 	}
 	
+	// 상품정보 삭제 - delete
+	public void deleteProduct(int pseq) {
+		mybatis.delete("ProductDAO.deleteProduct", pseq);
+	}
+	
 	/* 페이징처리*/
 	public List<ProductVO> getListWithPaging(Criteria criteria, String key){
 		HashMap<String, Object> map = new HashMap<>();

@@ -250,7 +250,7 @@ public class AdminController {
          return "redirect:admin_product_detail?pseq="+vo.getPseq();
       }
    }
-	   
+	
    /*
     *  전체 주문내역 조회
     */

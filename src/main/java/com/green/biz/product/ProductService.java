@@ -36,6 +36,9 @@ public interface ProductService {
 	// 상품정보 수정 - update
 	void updateProduct(ProductVO vo);
 	
+	// 상품정보 삭제 - delete
+	public void deleteProduct(int pseq);
+	
 	//페이징처리
 	public List<ProductVO> getListWithPaging(Criteria criteria, String key);
 

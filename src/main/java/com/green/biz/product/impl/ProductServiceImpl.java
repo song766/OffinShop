@@ -75,8 +75,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public void deleteProduct(int pseq) {
+		pDao.deleteProduct(pseq);
+	}
+	
+	@Override
 	public List<ProductVO> getListWithPaging(Criteria criteria, String key) {
 		return pDao.getListWithPaging(criteria, key);
 	}
+
 
 }
